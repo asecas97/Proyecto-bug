@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsxklv48kuflf"]
+
+[ext_resource type="Script" uid="uid://lmmffgdet1qo" path="res://scripts/game_manager.gd" id="1_1sokt"]
+[ext_resource type="PackedScene" uid="uid://b7cj82q21v3gr" path="res://Nodes/bug.tscn" id="1_bfc22"]
+[ext_resource type="PackedScene" uid="uid://b1247cqkcp3l4" path="res://Nodes/food.tscn" id="2_s24rg"]
+[ext_resource type="Script" uid="uid://cgy6rcwi6lgho" path="res://scripts/camera_2d.gd" id="2_wi60h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0d0y7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bfc22"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s24rg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1sokt"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wi60h"]
+vertices = PackedVector2Array(401, 402, -402, 402, -402, -398, 401, -401)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(401, 402, -402, 402, -402, -398, 401, -401)])
+agent_radius = 0.0
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_1sokt")
+
+[node name="Timer" type="Timer" parent="GameManager"]
+wait_time = 2.0
+
+[node name="Border" type="Node" parent="."]
+
+[node name="StaticBodyUp" type="StaticBody2D" parent="Border"]
+
+[node name="CollisionShapeUp" type="CollisionShape2D" parent="Border/StaticBodyUp"]
+position = Vector2(0, -400)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_0d0y7")
+
+[node name="StaticBodyLeft" type="StaticBody2D" parent="Border"]
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="Border/StaticBodyLeft"]
+position = Vector2(-400, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_bfc22")
+
+[node name="StaticBodyRight" type="StaticBody2D" parent="Border"]
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="Border/StaticBodyRight"]
+position = Vector2(400, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_s24rg")
+
+[node name="StaticBodyBottom" type="StaticBody2D" parent="Border"]
+
+[node name="CollisionShapeBottom" type="CollisionShape2D" parent="Border/StaticBodyBottom"]
+position = Vector2(0, 400)
+shape = SubResource("WorldBoundaryShape2D_1sokt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.44, 1.44)
+limit_left = -400
+limit_top = -400
+limit_right = 400
+limit_bottom = 400
+script = ExtResource("2_wi60h")
+
+[node name="Foods" type="Node" parent="."]
+
+[node name="Food" parent="Foods" instance=ExtResource("2_s24rg")]
+position = Vector2(-314, -148)
+
+[node name="Food2" parent="Foods" instance=ExtResource("2_s24rg")]
+position = Vector2(182, -94)
+
+[node name="Food3" parent="Foods" instance=ExtResource("2_s24rg")]
+position = Vector2(38, 33)
+
+[node name="Food4" parent="Foods" instance=ExtResource("2_s24rg")]
+position = Vector2(-198, 40)
+
+[node name="Bugs" type="Node" parent="."]
+
+[node name="Bug" parent="Bugs" instance=ExtResource("1_bfc22")]
+z_index = -1
+position = Vector2(-332, 18)
+
+[node name="Bug2" parent="Bugs" instance=ExtResource("1_bfc22")]
+z_index = -1
+position = Vector2(128, -64)
+
+[node name="Bug3" parent="Bugs" instance=ExtResource("1_bfc22")]
+z_index = -1
+position = Vector2(-23, -68)
+
+[node name="Bug4" parent="Bugs" instance=ExtResource("1_bfc22")]
+z_index = -1
+position = Vector2(133, 77)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_wi60h")
+
+[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
