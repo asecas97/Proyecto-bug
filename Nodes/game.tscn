@@ -66,15 +66,19 @@ script = ExtResource("2_wi60h")
 
 [node name="Food" parent="Foods" instance=ExtResource("2_s24rg")]
 position = Vector2(-314, -148)
+collision_mask = 3
 
 [node name="Food2" parent="Foods" instance=ExtResource("2_s24rg")]
 position = Vector2(182, -94)
+collision_mask = 3
 
 [node name="Food3" parent="Foods" instance=ExtResource("2_s24rg")]
 position = Vector2(38, 33)
+collision_mask = 3
 
 [node name="Food4" parent="Foods" instance=ExtResource("2_s24rg")]
 position = Vector2(-198, 40)
+collision_mask = 3
 
 [node name="Bugs" type="Node" parent="."]
 

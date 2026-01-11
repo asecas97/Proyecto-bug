@@ -9,7 +9,6 @@ func _ready() -> void:
 	health_component.value = 100
 
 func setSprite() -> void:
-	print("Comida restante: "+str(health_component.value))
 	if(health_component.value < 100 and health_component.value>=75):
 		animated_sprite.set_frame_and_progress(1, animated_sprite.get_process_delta_time())
 	elif(health_component.value < 75 and health_component.value>=50):

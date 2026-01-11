@@ -6,23 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://b3jqe8lofs0wq" path="res://Nodes/hunger.tscn" id="4_6bxoe"]
 [ext_resource type="PackedScene" uid="uid://bw7ira1t5pxq8" path="res://Nodes/energy.tscn" id="5_4ngc7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_khai6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgxfn"]
 atlas = ExtResource("1_khai6")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1qao"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bxoe"]
 atlas = ExtResource("1_khai6")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ypgue"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ngc7"]
 atlas = ExtResource("1_khai6")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_khai6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_khai6")
+"texture": SubResource("AtlasTexture_fgxfn")
 }],
 "loop": true,
 "name": &"idle",
@@ -30,10 +30,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x1qao")
+"texture": SubResource("AtlasTexture_6bxoe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ypgue")
+"texture": SubResource("AtlasTexture_4ngc7")
 }],
 "loop": true,
 "name": &"move",
@@ -50,7 +50,7 @@ script = ExtResource("2_pdet3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_khai6")
-animation = &"move"
+animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -67,4 +67,3 @@ target_position = Vector2(11, 0)
 [node name="Energy" parent="." instance=ExtResource("5_4ngc7")]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true

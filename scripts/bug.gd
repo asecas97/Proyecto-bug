@@ -16,7 +16,6 @@ var eating_delta: float = 0.0
 func _ready() -> void:
 	health.value = 100
 	energy.value = 100
-	hunger.value = 45
 	hunger.voracity = 2
 	hunger.diet_type = "carnivorous"
 	animated_sprite.animation = "move"
@@ -29,7 +28,7 @@ func _process(delta: float) -> void:
 		if(ray_cast.get_collider() is FoodComponent && (hunger.value >= 25 or hunger.eating)):
 			stop()
 			if(int(eating_delta) % 1 == 0 && int(eating_delta) != 0):
-				eating_delta = 0
+				eating_delta = 0.0
 				eat(ray_cast.get_collider())
 			return
 	if(hunger.value >= 50 and !hunger.eating):
@@ -57,8 +56,8 @@ func random_move(delta:float):
 func move(delta:float):
 	var new_velocity: Vector2 = global_position.direction_to(nav_agent.get_next_path_position())
 	position += new_velocity * delta * speed
-	animated_sprite.rotation = new_velocity.angle()+deg_to_rad(90)
-	ray_cast.rotation = new_velocity.angle()+deg_to_rad(90)
+	animated_sprite.rotation = new_velocity.angle()
+	ray_cast.rotation = new_velocity.angle()
 	animated_sprite.play("move")
 	
 func eat(comida: FoodComponent):

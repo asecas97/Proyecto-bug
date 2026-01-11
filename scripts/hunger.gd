@@ -15,8 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(!eating):
 		hunger_delta += delta
-		if(int(hunger_delta)%2 == 0 && int(hunger_delta) != 0):
-			print("Hunger: "+str(value))
+		if(int(hunger_delta)%4 == 0 && int(hunger_delta) != 0):
 			hunger_delta = 0
 			value += 1
 	else:

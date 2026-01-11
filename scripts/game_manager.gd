@@ -1,7 +1,6 @@
 extends Node
 
 func eat(comida: FoodComponent, voracity: int) -> int:
-	print("comer")
 	if(comida.health_component.value < voracity):
 		voracity = comida.health_component.value
 		comida.health_component.value = 0
