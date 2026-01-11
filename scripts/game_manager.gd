@@ -11,12 +11,15 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	delta_total += 1
 
-func comer(comida: FoodComponent, voracity: int) -> int: 
-	if(comida.health_component.value > voracity):
-		return comida.health_component.value
+func comer(comida: FoodComponent, voracity: int) -> int:
+	print("comer")
+	if(comida.health_component.value < voracity):
+		voracity = comida.health_component.value
+		comida.health_component.value = 0
 	else:
 		comida.health_component.value -= voracity
-		return voracity
+	comida.setSprite()
+	return voracity
 
 func getNearestFood(x_position:int,y_position:int)-> FoodComponent:
 	var foods_node: Node = $"../Foods"

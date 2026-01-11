@@ -48,6 +48,7 @@ light_mask = 2
 script = ExtResource("2_pdet3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 sprite_frames = SubResource("SpriteFrames_khai6")
 animation = &"move"
 

@@ -81,21 +81,9 @@ position = Vector2(-198, 40)
 
 [node name="Bugs" type="Node" parent="."]
 
-[node name="Bug" parent="Bugs" instance=ExtResource("1_bfc22")]
-z_index = -1
-position = Vector2(-332, 18)
-
-[node name="Bug2" parent="Bugs" instance=ExtResource("1_bfc22")]
-z_index = -1
-position = Vector2(128, -64)
-
 [node name="Bug3" parent="Bugs" instance=ExtResource("1_bfc22")]
 z_index = -1
 position = Vector2(-23, -68)
-
-[node name="Bug4" parent="Bugs" instance=ExtResource("1_bfc22")]
-z_index = -1
-position = Vector2(133, 77)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_wi60h")

@@ -13,5 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	hunger_delta += delta
 	if(int(hunger_delta)%2 == 0 && int(hunger_delta) != 0):
+		hunger_delta = 0
 		value += 1

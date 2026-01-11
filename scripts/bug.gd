@@ -1,7 +1,10 @@
 extends Node2D
+class_name Bug
 
 var speed = 40
 var move_delta: float = 0.0
+var eating_delta: float = 0.0
+var eating: bool = false
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -14,6 +17,7 @@ var move_delta: float = 0.0
 func _ready() -> void:
 	health.value = 100
 	energy.value = 100
+	hunger.value = 75
 	hunger.voracity = 2
 	hunger.diet_type = "carnivorous"
 	animated_sprite.animation = "move"
@@ -21,30 +25,27 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	move_delta += delta
-	# Testing movement
-	#if(nav_agent.is_navigation_finished()):
-		#game_manager_delta = game_manager.delta_total
-		#random_move(delta)
-	#else:
-		#move(delta)
+	eating_delta += delta
 	# Procesos automaticos obligatorios
-	if(hunger.value >= 50):
+	if(ray_cast.is_colliding()):
+		if(ray_cast.get_collider() is FoodComponent && (hunger.value >= 25 or eating)):
+			stop()
+			if(int(eating_delta) % 1 == 0 && int(eating_delta) != 0):
+				comer(ray_cast.get_collider())
+			return
+	if(hunger.value >= 50 and !eating):
 		var food = game_manager.getNearestFood(position.x, position.y)
 		nav_agent.target_position = food.get_position()
+		move_delta = 0.0
 		move(delta)
-		pass
-	if(ray_cast.is_colliding()):
-		if(ray_cast.get_collider() is FoodComponent && hunger.value >= 25):
-			comer(ray_cast.get_collider())
+	elif(int(move_delta) % 4 == 0 && int(move_delta) != 0 && nav_agent.is_navigation_finished()):
+		move_delta = 0.0
+		random_move(delta)
 	else:
-		if(int(move_delta) % 4 == 0 && int(move_delta) != 0 && nav_agent.is_navigation_finished()):
-			move_delta = 0.0
-			random_move(delta)
+		if(nav_agent.is_navigation_finished()):
+			stop()
 		else:
-			if(nav_agent.is_navigation_finished()):
-				if(animated_sprite.animation != "idle"):
-					animated_sprite.play("idle")
-			else:
+			if(!eating):
 				move_delta = 0.0
 				move(delta)
 	
@@ -64,3 +65,13 @@ func move(delta:float):
 func comer(comida: FoodComponent):
 	var food = game_manager.comer(comida, hunger.voracity)
 	hunger.value -= food
+	if(hunger.value == 0 or food == 0):
+		eating = false
+	else:
+		eating = true
+		nav_agent.target_position = self.position
+
+func stop():
+	nav_agent.target_position = self.position
+	if(animated_sprite.animation != "idle"):
+		animated_sprite.play("idle")
