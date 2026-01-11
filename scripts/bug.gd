@@ -4,7 +4,6 @@ class_name Bug
 var speed = 40
 var move_delta: float = 0.0
 var eating_delta: float = 0.0
-var eating: bool = false
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -17,7 +16,7 @@ var eating: bool = false
 func _ready() -> void:
 	health.value = 100
 	energy.value = 100
-	hunger.value = 75
+	hunger.value = 45
 	hunger.voracity = 2
 	hunger.diet_type = "carnivorous"
 	animated_sprite.animation = "move"
@@ -26,14 +25,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	move_delta += delta
 	eating_delta += delta
-	# Procesos automaticos obligatorios
 	if(ray_cast.is_colliding()):
-		if(ray_cast.get_collider() is FoodComponent && (hunger.value >= 25 or eating)):
+		if(ray_cast.get_collider() is FoodComponent && (hunger.value >= 25 or hunger.eating)):
 			stop()
 			if(int(eating_delta) % 1 == 0 && int(eating_delta) != 0):
-				comer(ray_cast.get_collider())
+				eating_delta = 0
+				eat(ray_cast.get_collider())
 			return
-	if(hunger.value >= 50 and !eating):
+	if(hunger.value >= 50 and !hunger.eating):
 		var food = game_manager.getNearestFood(position.x, position.y)
 		nav_agent.target_position = food.get_position()
 		move_delta = 0.0
@@ -45,7 +44,7 @@ func _process(delta: float) -> void:
 		if(nav_agent.is_navigation_finished()):
 			stop()
 		else:
-			if(!eating):
+			if(!hunger.eating):
 				move_delta = 0.0
 				move(delta)
 	
@@ -62,13 +61,13 @@ func move(delta:float):
 	ray_cast.rotation = new_velocity.angle()+deg_to_rad(90)
 	animated_sprite.play("move")
 	
-func comer(comida: FoodComponent):
-	var food = game_manager.comer(comida, hunger.voracity)
+func eat(comida: FoodComponent):
+	var food = game_manager.eat(comida, hunger.voracity)
 	hunger.value -= food
 	if(hunger.value == 0 or food == 0):
-		eating = false
+		hunger.eating = false
 	else:
-		eating = true
+		hunger.eating = true
 		nav_agent.target_position = self.position
 
 func stop():

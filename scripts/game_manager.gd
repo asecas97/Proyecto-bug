@@ -1,17 +1,6 @@
 extends Node
 
-@onready var timer: Timer = $Timer
-
-var delta_total = 0
-
-func _process(delta: float) -> void:
-	if(timer.is_stopped()):
-		timer.start()
-
-func _on_timer_timeout() -> void:
-	delta_total += 1
-
-func comer(comida: FoodComponent, voracity: int) -> int:
+func eat(comida: FoodComponent, voracity: int) -> int:
 	print("comer")
 	if(comida.health_component.value < voracity):
 		voracity = comida.health_component.value
