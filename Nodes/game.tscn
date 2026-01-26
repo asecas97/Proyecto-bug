@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsxklv48kuflf"]
+[gd_scene load_steps=11 format=3 uid="uid://dsxklv48kuflf"]
 
 [ext_resource type="Script" uid="uid://lmmffgdet1qo" path="res://scripts/game_manager.gd" id="1_1sokt"]
 [ext_resource type="PackedScene" uid="uid://b7cj82q21v3gr" path="res://Nodes/bug.tscn" id="1_bfc22"]
 [ext_resource type="PackedScene" uid="uid://b1247cqkcp3l4" path="res://Nodes/food.tscn" id="2_s24rg"]
 [ext_resource type="Script" uid="uid://cgy6rcwi6lgho" path="res://scripts/camera_2d.gd" id="2_wi60h"]
+[ext_resource type="PackedScene" uid="uid://dltgmwnwy3bdt" path="res://Nodes/Bugs/ladybug.tscn" id="4_y4gxr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0d0y7"]
 
@@ -79,6 +80,9 @@ collision_mask = 3
 [node name="Food4" parent="Foods" instance=ExtResource("2_s24rg")]
 position = Vector2(-198, 40)
 collision_mask = 3
+
+[node name="Ladybug" parent="Foods" instance=ExtResource("4_y4gxr")]
+position = Vector2(85, -81)
 
 [node name="Bugs" type="Node" parent="."]
 

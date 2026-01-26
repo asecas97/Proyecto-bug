@@ -15,6 +15,12 @@ run/main_scene="uid://dsxklv48kuflf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[debug]
+
+shapes/navigation/2d/geometry_edge_disabled_color=Color(0.5517528, 0.5094144, 0.19904792, 1)
+shapes/navigation/2d/geometry_face_disabled_color=Color(0.27058825, 0.57254905, 0.43137255, 1)
+shapes/navigation/2d/link_connection_disabled_color=Color(0.4568584, 0.4305852, 0.8779105, 1)
+
 [input]
 
 up={
@@ -33,3 +39,4 @@ down={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.5971761, 0.59717613, 0.597176, 1)
