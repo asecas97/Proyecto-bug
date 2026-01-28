@@ -127,6 +127,7 @@ metadata/_custom_type_script = "uid://xfvanq6882uv"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_54bco")
 animation = &"move"
+frame_progress = 0.20357604
 
 [node name="Area2D" type="Area2D" parent="."]
 
