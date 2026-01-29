@@ -66,6 +66,7 @@ func eat(comida: FoodComponent):
 	if(hunger.value == 0 or food == 0):
 		hunger.eating = false
 	else:
+		animated_sprite.play("eat")
 		hunger.eating = true
 		nav_agent.target_position = self.position
 

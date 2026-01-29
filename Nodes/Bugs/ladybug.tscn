@@ -1,10 +1,38 @@
-[gd_scene load_steps=22 format=3 uid="uid://dltgmwnwy3bdt"]
+[gd_scene load_steps=29 format=3 uid="uid://dltgmwnwy3bdt"]
 
 [ext_resource type="Script" uid="uid://xfvanq6882uv" path="res://scripts/bug.gd" id="1_mr2uu"]
 [ext_resource type="Texture2D" uid="uid://4ffx7b66jof0" path="res://Resources/ladybug.png" id="2_cqr0e"]
 [ext_resource type="PackedScene" uid="uid://5ww5edyphjq2" path="res://Nodes/health.tscn" id="3_dyneo"]
 [ext_resource type="PackedScene" uid="uid://b3jqe8lofs0wq" path="res://Nodes/hunger.tscn" id="4_p5m5h"]
 [ext_resource type="PackedScene" uid="uid://bw7ira1t5pxq8" path="res://Nodes/energy.tscn" id="5_fg6j6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54bco"]
+atlas = ExtResource("2_cqr0e")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqjg0"]
+atlas = ExtResource("2_cqr0e")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ujje"]
+atlas = ExtResource("2_cqr0e")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6kop"]
+atlas = ExtResource("2_cqr0e")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay671"]
+atlas = ExtResource("2_cqr0e")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uygro"]
+atlas = ExtResource("2_cqr0e")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1ga3"]
+atlas = ExtResource("2_cqr0e")
+region = Rect2(64, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_415kg"]
 atlas = ExtResource("2_cqr0e")
@@ -64,6 +92,32 @@ region = Rect2(128, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_54bco"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54bco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqjg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ujje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6kop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay671")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uygro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1ga3")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_415kg")
@@ -126,8 +180,7 @@ metadata/_custom_type_script = "uid://xfvanq6882uv"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_54bco")
-animation = &"move"
-frame_progress = 0.20357604
+animation = &"eat"
 
 [node name="Area2D" type="Area2D" parent="."]
 

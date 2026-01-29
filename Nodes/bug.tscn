@@ -25,6 +25,14 @@ animations = [{
 "texture": SubResource("AtlasTexture_fgxfn")
 }],
 "loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgxfn")
+}],
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -50,7 +58,7 @@ script = ExtResource("2_pdet3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_khai6")
-animation = &"idle"
+animation = &"eat"
 
 [node name="Area2D" type="Area2D" parent="."]
 
