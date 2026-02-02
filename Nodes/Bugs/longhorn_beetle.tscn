@@ -1,9 +1,116 @@
-[gd_scene load_steps=2 format=3 uid="uid://dua71gp0fo107"]
+[gd_scene load_steps=17 format=3 uid="uid://dua71gp0fo107"]
 
 [ext_resource type="Script" uid="uid://xfvanq6882uv" path="res://scripts/bug.gd" id="1_aompu"]
+[ext_resource type="Texture2D" uid="uid://47viuiswasyc" path="res://Resources/longhorn_beetle.png" id="2_bc7ga"]
+[ext_resource type="PackedScene" uid="uid://5ww5edyphjq2" path="res://Nodes/health.tscn" id="3_i1r6j"]
+[ext_resource type="PackedScene" uid="uid://b3jqe8lofs0wq" path="res://Nodes/hunger.tscn" id="4_i0874"]
+[ext_resource type="PackedScene" uid="uid://bw7ira1t5pxq8" path="res://Nodes/energy.tscn" id="5_8w8ys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vnst"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqnqr"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq1nr"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k38o"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj5xf"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plra3"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7j8v"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpstb"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyi0g"]
+atlas = ExtResource("2_bc7ga")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxdu6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vnst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqnqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq1nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k38o")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj5xf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plra3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7j8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpstb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyi0g")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yvqv"]
+size = Vector2(45, 14)
 
 [node name="LonghornBeetle" type="Node2D"]
 script = ExtResource("1_aompu")
 metadata/_custom_type_script = "uid://xfvanq6882uv"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cxdu6")
+animation = &"move"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_3yvqv")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(25, 0)
+
+[node name="Health" parent="." instance=ExtResource("3_i1r6j")]
+
+[node name="Hunger" parent="." instance=ExtResource("4_i0874")]
+
+[node name="Energy" parent="." instance=ExtResource("5_8w8ys")]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
