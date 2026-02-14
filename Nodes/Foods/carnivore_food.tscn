@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://vrlamuhgrn7g"]
+
+[ext_resource type="Script" uid="uid://c8sjg1oqqgqhh" path="res://scripts/food.gd" id="1_jq3fx"]
+[ext_resource type="Texture2D" uid="uid://c284l166o45ig" path="res://Resources/food.png" id="2_f35a6"]
+[ext_resource type="Script" uid="uid://6uqwtrt0e80d" path="res://scripts/health.gd" id="3_gcd1c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgh34"]
+atlas = ExtResource("2_f35a6")
+region = Rect2(0, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bpd8"]
+atlas = ExtResource("2_f35a6")
+region = Rect2(0, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt3xf"]
+atlas = ExtResource("2_f35a6")
+region = Rect2(0, 168, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im5cl"]
+atlas = ExtResource("2_f35a6")
+region = Rect2(0, 192, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1q5nn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgh34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bpd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt3xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im5cl")
+}],
+"loop": false,
+"name": &"eat",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bso22"]
+
+[node name="CarnivoreFood" type="StaticBody2D" unique_id=1666708513]
+script = ExtResource("1_jq3fx")
+type = "carnivorous"
+metadata/_custom_type_script = "uid://c8sjg1oqqgqhh"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=255651836]
+sprite_frames = SubResource("SpriteFrames_1q5nn")
+animation = &"eat"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=972966392]
+shape = SubResource("RectangleShape2D_bso22")
+
+[node name="HealthComponent" type="Node2D" parent="." unique_id=1043296362]
+script = ExtResource("3_gcd1c")
+metadata/_custom_type_script = "uid://6uqwtrt0e80d"

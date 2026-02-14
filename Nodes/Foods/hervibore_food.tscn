@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://q3wdjqi0mnhi"]
+
+[ext_resource type="Script" uid="uid://c8sjg1oqqgqhh" path="res://scripts/food.gd" id="1_rbf4f"]
+[ext_resource type="Texture2D" uid="uid://c284l166o45ig" path="res://Resources/food.png" id="2_cg5gv"]
+[ext_resource type="Script" uid="uid://6uqwtrt0e80d" path="res://scripts/health.gd" id="3_ajeep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5668e"]
+atlas = ExtResource("2_cg5gv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sncbg"]
+atlas = ExtResource("2_cg5gv")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be13n"]
+atlas = ExtResource("2_cg5gv")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmnc0"]
+atlas = ExtResource("2_cg5gv")
+region = Rect2(0, 72, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mjwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5668e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sncbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be13n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmnc0")
+}],
+"loop": false,
+"name": &"eat",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rrut"]
+size = Vector2(19, 15)
+
+[node name="HerviboreFood" type="StaticBody2D" unique_id=93938981]
+script = ExtResource("1_rbf4f")
+type = "herbivorous"
+metadata/_custom_type_script = "uid://c8sjg1oqqgqhh"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=496995767]
+sprite_frames = SubResource("SpriteFrames_8mjwa")
+animation = &"eat"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=508455043]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_5rrut")
+
+[node name="HealthComponent" type="Node2D" parent="." unique_id=1842086905]
+script = ExtResource("3_ajeep")
+metadata/_custom_type_script = "uid://6uqwtrt0e80d"

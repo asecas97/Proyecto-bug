@@ -4,6 +4,8 @@ class_name FoodComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var type = "";
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health_component.value = 100
