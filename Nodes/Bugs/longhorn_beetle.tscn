@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dua71gp0fo107"]
+[gd_scene format=3 uid="uid://dua71gp0fo107"]
 
 [ext_resource type="Script" uid="uid://xfvanq6882uv" path="res://scripts/bug.gd" id="1_aompu"]
 [ext_resource type="Texture2D" uid="uid://47viuiswasyc" path="res://Resources/longhorn_beetle.png" id="2_bc7ga"]
@@ -174,27 +174,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3yvqv"]
 size = Vector2(45, 14)
 
-[node name="LonghornBeetle" type="Node2D"]
+[node name="LonghornBeetle" type="Node2D" unique_id=1099629459]
 script = ExtResource("1_aompu")
 metadata/_custom_type_script = "uid://xfvanq6882uv"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=314288488]
 sprite_frames = SubResource("SpriteFrames_cxdu6")
 animation = &"move"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1157052949]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=436824637]
 position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_3yvqv")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=408089645]
 target_position = Vector2(25, 0)
 
-[node name="Health" parent="." instance=ExtResource("3_i1r6j")]
+[node name="Health" parent="." unique_id=1363616301 instance=ExtResource("3_i1r6j")]
 
-[node name="Hunger" parent="." instance=ExtResource("4_i0874")]
+[node name="Hunger" parent="." unique_id=1684664066 instance=ExtResource("4_i0874")]
+diet_type = "herbivorous"
 
-[node name="Energy" parent="." instance=ExtResource("5_8w8ys")]
+[node name="Energy" parent="." unique_id=1559209766 instance=ExtResource("5_8w8ys")]
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1067464085]

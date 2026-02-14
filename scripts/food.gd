@@ -1,5 +1,5 @@
 extends StaticBody2D
-class_name FoodComponent
+class_name Food
 
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D

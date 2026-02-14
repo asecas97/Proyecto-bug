@@ -17,7 +17,6 @@ func _ready() -> void:
 	health.value = 100
 	energy.value = 100
 	hunger.voracity = 2
-	hunger.diet_type = "carnivorous"
 	animated_sprite.animation = "move"
 	animated_sprite.set_frame_and_progress(0, 0.0)
 	
@@ -25,14 +24,14 @@ func _process(delta: float) -> void:
 	move_delta += delta
 	eating_delta += delta
 	if(ray_cast.is_colliding()):
-		if(ray_cast.get_collider() is FoodComponent && (hunger.value >= 25 or hunger.eating)):
+		if(ray_cast.get_collider() is Food && (hunger.value >= 25 or hunger.eating)):
 			stop()
 			if(int(eating_delta) % 1 == 0 && int(eating_delta) != 0):
 				eating_delta = 0.0
 				eat(ray_cast.get_collider())
 			return
 	if(hunger.value >= 50 and !hunger.eating):
-		var food = game_manager.getNearestFood(position.x, position.y)
+		var food = game_manager.getNearestFood(position.x, position.y, self)
 		nav_agent.target_position = food.get_position()
 		move_delta = 0.0
 		move(delta)
@@ -60,7 +59,7 @@ func move(delta:float):
 	ray_cast.rotation = new_velocity.angle()
 	animated_sprite.play("move")
 	
-func eat(comida: FoodComponent):
+func eat(comida: Food):
 	var food = game_manager.eat(comida, hunger.voracity)
 	hunger.value -= food
 	if(hunger.value == 0 or food == 0):

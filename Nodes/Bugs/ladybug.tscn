@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dltgmwnwy3bdt"]
+[gd_scene format=3 uid="uid://dltgmwnwy3bdt"]
 
 [ext_resource type="Script" uid="uid://xfvanq6882uv" path="res://scripts/bug.gd" id="1_mr2uu"]
 [ext_resource type="Texture2D" uid="uid://4ffx7b66jof0" path="res://Resources/ladybug.png" id="2_cqr0e"]
@@ -174,27 +174,28 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_dyneo"]
 radius = 20.524376
 
-[node name="Ladybug" type="Node2D"]
+[node name="Ladybug" type="Node2D" unique_id=1222018801]
 script = ExtResource("1_mr2uu")
 metadata/_custom_type_script = "uid://xfvanq6882uv"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=369436009]
 sprite_frames = SubResource("SpriteFrames_54bco")
 animation = &"eat"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=91996567]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1933084011]
 position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_dyneo")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1940678441]
 target_position = Vector2(25, 0)
 
-[node name="Health" parent="." instance=ExtResource("3_dyneo")]
+[node name="Health" parent="." unique_id=2060023922 instance=ExtResource("3_dyneo")]
 
-[node name="Hunger" parent="." instance=ExtResource("4_p5m5h")]
+[node name="Hunger" parent="." unique_id=623988303 instance=ExtResource("4_p5m5h")]
+diet_type = "carnivorous"
 
-[node name="Energy" parent="." instance=ExtResource("5_fg6j6")]
+[node name="Energy" parent="." unique_id=1794627944 instance=ExtResource("5_fg6j6")]
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1038865076]

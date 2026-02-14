@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1247cqkcp3l4"]
+[gd_scene format=3 uid="uid://b1247cqkcp3l4"]
 
 [ext_resource type="Script" uid="uid://c8sjg1oqqgqhh" path="res://scripts/food.gd" id="1_be2pw"]
 [ext_resource type="Script" uid="uid://6uqwtrt0e80d" path="res://scripts/health.gd" id="1_dt0o3"]
@@ -50,16 +50,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_81yl5"]
 size = Vector2(16, 12)
 
-[node name="Food" type="StaticBody2D"]
+[node name="Food" type="StaticBody2D" unique_id=1687254458]
 script = ExtResource("1_be2pw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1953390916]
 sprite_frames = SubResource("SpriteFrames_6wvn0")
 animation = &"eat"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=207000657]
 shape = SubResource("RectangleShape2D_81yl5")
 
-[node name="HealthComponent" type="Node2D" parent="."]
+[node name="HealthComponent" type="Node2D" parent="." unique_id=2008367887]
 script = ExtResource("1_dt0o3")
 metadata/_custom_type_script = "uid://6uqwtrt0e80d"

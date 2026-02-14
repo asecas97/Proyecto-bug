@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsxklv48kuflf"]
 
 [ext_resource type="Script" uid="uid://lmmffgdet1qo" path="res://scripts/game_manager.gd" id="1_1sokt"]
+[ext_resource type="PackedScene" uid="uid://b7cj82q21v3gr" path="res://Nodes/bug.tscn" id="1_bfc22"]
 [ext_resource type="Script" uid="uid://cgy6rcwi6lgho" path="res://scripts/camera_2d.gd" id="2_wi60h"]
 [ext_resource type="PackedScene" uid="uid://vrlamuhgrn7g" path="res://Nodes/Foods/carnivore_food.tscn" id="3_424rh"]
 [ext_resource type="PackedScene" uid="uid://q3wdjqi0mnhi" path="res://Nodes/Foods/hervibore_food.tscn" id="4_fhu7r"]
@@ -73,6 +74,10 @@ position = Vector2(-190, -172)
 position = Vector2(-241, -36)
 
 [node name="Bugs" type="Node" parent="." unique_id=1915198742]
+
+[node name="Bug3" parent="Bugs" unique_id=1007447551 instance=ExtResource("1_bfc22")]
+z_index = -1
+position = Vector2(-23, -68)
 
 [node name="Ladybug" parent="Bugs" unique_id=980974651 instance=ExtResource("4_y4gxr")]
 position = Vector2(85, -81)

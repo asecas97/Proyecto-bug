@@ -3,7 +3,7 @@ class_name HungerComponent
 
 var value = 0
 var voracity = 0
-var diet_type = ""
+@export var diet_type = ""
 var hunger_delta: float = 0.0
 var eating: bool = false
 
