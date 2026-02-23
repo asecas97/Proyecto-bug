@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://q3wdjqi0mnhi" path="res://Nodes/Foods/hervibore_food.tscn" id="4_fhu7r"]
 [ext_resource type="PackedScene" uid="uid://dltgmwnwy3bdt" path="res://Nodes/Bugs/ladybug.tscn" id="4_y4gxr"]
 [ext_resource type="PackedScene" uid="uid://dua71gp0fo107" path="res://Nodes/Bugs/longhorn_beetle.tscn" id="6_deiy4"]
+[ext_resource type="Texture2D" uid="uid://bnnqkbgvsr8aa" path="res://Resources/background.png" id="7_424rh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0d0y7"]
 
@@ -67,7 +68,7 @@ script = ExtResource("2_wi60h")
 [node name="Foods" type="Node" parent="." unique_id=676520875]
 
 [node name="CarnivoreFood" parent="Foods" unique_id=1666708513 instance=ExtResource("3_424rh")]
-position = Vector2(-190, -172)
+position = Vector2(-268, -183)
 
 [node name="HerviboreFood" parent="Foods" unique_id=93938981 instance=ExtResource("4_fhu7r")]
 position = Vector2(-241, -36)
@@ -75,10 +76,17 @@ position = Vector2(-241, -36)
 [node name="Bugs" type="Node" parent="." unique_id=1915198742]
 
 [node name="Ladybug" parent="Bugs" unique_id=980974651 instance=ExtResource("4_y4gxr")]
-position = Vector2(85, -81)
+position = Vector2(-29, -236)
 
 [node name="LonghornBeetle" parent="Bugs" unique_id=1444678602 instance=ExtResource("6_deiy4")]
-position = Vector2(-145, -48)
+position = Vector2(-100, -286)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=288474848]
 navigation_polygon = SubResource("NavigationPolygon_wi60h")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1575599148]
+offset_left = -402.0
+offset_top = -398.0
+offset_right = 400.0
+offset_bottom = 400.0
+texture = ExtResource("7_424rh")
