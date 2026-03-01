@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Proyecto Bug"
-run/main_scene="uid://dsxklv48kuflf"
+run/main_scene="uid://cudgms8uo8ws6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

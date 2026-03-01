@@ -68,18 +68,18 @@ script = ExtResource("2_wi60h")
 [node name="Foods" type="Node" parent="." unique_id=676520875]
 
 [node name="CarnivoreFood" parent="Foods" unique_id=1666708513 instance=ExtResource("3_424rh")]
-position = Vector2(-268, -183)
+position = Vector2(-271, -280)
 
 [node name="HerviboreFood" parent="Foods" unique_id=93938981 instance=ExtResource("4_fhu7r")]
-position = Vector2(-241, -36)
+position = Vector2(-199, -274)
 
 [node name="Bugs" type="Node" parent="." unique_id=1915198742]
 
 [node name="Ladybug" parent="Bugs" unique_id=980974651 instance=ExtResource("4_y4gxr")]
-position = Vector2(-29, -236)
+position = Vector2(-186, -340)
 
 [node name="LonghornBeetle" parent="Bugs" unique_id=1444678602 instance=ExtResource("6_deiy4")]
-position = Vector2(-100, -286)
+position = Vector2(-324, -352)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=288474848]
 navigation_polygon = SubResource("NavigationPolygon_wi60h")
