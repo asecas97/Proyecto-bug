@@ -20,3 +20,13 @@ func _process(delta: float) -> void:
 			value += 1
 	else:
 		hunger_delta = 0.0
+
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"value": value,
+		"voracity": voracity,
+		"diet_type": diet_type
+	}
+	return save_dict

@@ -73,3 +73,15 @@ func stop():
 	nav_agent.target_position = self.position
 	if(animated_sprite.animation != "idle"):
 		animated_sprite.play("idle")
+		
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"health": health.save(),
+		"hunger": hunger.save(),
+		"energy": energy.save()
+	}
+	return save_dict

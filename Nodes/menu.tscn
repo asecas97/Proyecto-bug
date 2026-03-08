@@ -80,3 +80,4 @@ offset_bottom = 98.0
 texture = ExtResource("5_6xs38")
 
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -21,3 +21,14 @@ func setSprite() -> void:
 		animated_sprite.set_frame_and_progress(4, animated_sprite.get_process_delta_time())
 	else:
 		queue_free()
+
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"health": health_component.save(),
+		"type": type
+	}
+	return save_dict
