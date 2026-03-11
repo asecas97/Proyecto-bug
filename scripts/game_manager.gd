@@ -1,8 +1,15 @@
 extends Node
 
-# Called when the node enters the scene tree for the first time.
+var preload_bug: PackedScene
+
 func _ready() -> void:
-	pass
+	preload_bug = preload("res://Nodes/Bugs/ladybug.tscn")
+
+# Called when the node enters the scene tree for the first time.
+func _process(delta: float) -> void:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+		#test_add_food()
+		test_add_food(get_viewport().get_mouse_position())
 
 func eat(comida: Food, voracity: int) -> int:
 	if(comida.health_component.value < voracity):
@@ -31,6 +38,7 @@ func getNearestFood(x_position:int,y_position:int, bug:Bug)-> Food:
 
 func save_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	print(save_file.get_path_absolute())
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
@@ -51,3 +59,11 @@ func save_game():
 
 		# Store the save dictionary as a new line in the save file.
 		save_file.store_line(json_string)
+		print("Saved data")
+		
+func test_add_food(p:Vector2):
+#func test_add_food():
+	var bug = preload_bug.instantiate()
+	add_child(bug)
+	bug.position.x = p[0]
+	bug.position.y = p[1]
