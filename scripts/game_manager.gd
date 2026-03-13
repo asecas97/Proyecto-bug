@@ -1,15 +1,16 @@
-extends Node
+extends Node2D
 
 var preload_bug: PackedScene
+@onready var bugs: Node = %Bugs
+@onready var foods: Node = %Foods
 
 func _ready() -> void:
 	preload_bug = preload("res://Nodes/Bugs/ladybug.tscn")
 
-# Called when the node enters the scene tree for the first time.
-func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
-		#test_add_food()
-		test_add_food(get_viewport().get_mouse_position())
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE:
+		if event.is_pressed():
+			test_add_food(get_global_mouse_position())
 
 func eat(comida: Food, voracity: int) -> int:
 	if(comida.health_component.value < voracity):
@@ -62,8 +63,9 @@ func save_game():
 		print("Saved data")
 		
 func test_add_food(p:Vector2):
-#func test_add_food():
 	var bug = preload_bug.instantiate()
 	add_child(bug)
-	bug.position.x = p[0]
-	bug.position.y = p[1]
+	bug.position.x = p.x
+	bug.position.y = p.y
+	bug.reparent(bugs)
+	bug.add_to_group("Persist")

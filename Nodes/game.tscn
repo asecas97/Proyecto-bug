@@ -25,7 +25,7 @@ agent_radius = 0.0
 
 [node name="Game" type="Node2D" unique_id=1853252840]
 
-[node name="GameManager" type="Node" parent="." unique_id=128834720]
+[node name="GameManager" type="Node2D" parent="." unique_id=763898159]
 unique_name_in_owner = true
 script = ExtResource("1_1sokt")
 
@@ -69,6 +69,7 @@ script = ExtResource("2_wi60h")
 [node name="HUB" parent="Camera2D" unique_id=974065852 instance=ExtResource("3_fhu7r")]
 
 [node name="Foods" type="Node" parent="." unique_id=676520875]
+unique_name_in_owner = true
 
 [node name="CarnivoreFood" parent="Foods" unique_id=1666708513 groups=["Persist"] instance=ExtResource("3_424rh")]
 position = Vector2(-271, -280)
@@ -77,6 +78,7 @@ position = Vector2(-271, -280)
 position = Vector2(-199, -274)
 
 [node name="Bugs" type="Node" parent="." unique_id=1915198742]
+unique_name_in_owner = true
 
 [node name="Ladybug" parent="Bugs" unique_id=980974651 groups=["Persist"] instance=ExtResource("4_y4gxr")]
 position = Vector2(-186, -340)
