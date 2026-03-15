@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsxklv48kuflf"]
 
 [ext_resource type="Script" uid="uid://lmmffgdet1qo" path="res://scripts/game_manager.gd" id="1_1sokt"]
+[ext_resource type="Script" uid="uid://wjeci6odngb4" path="res://scripts/game.gd" id="1_h85cu"]
 [ext_resource type="Script" uid="uid://cgy6rcwi6lgho" path="res://scripts/camera_2d.gd" id="2_wi60h"]
 [ext_resource type="PackedScene" uid="uid://vrlamuhgrn7g" path="res://Nodes/Foods/carnivore_food.tscn" id="3_424rh"]
 [ext_resource type="PackedScene" uid="uid://dfiual5k3gba3" path="res://Nodes/hub.tscn" id="3_fhu7r"]
@@ -18,12 +19,13 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1sokt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wi60h"]
-vertices = PackedVector2Array(401, 402, -402, 402, -402, -398, 401, -401)
+vertices = PackedVector2Array(402, 396, -400, 396, -400, -402, 402, -402)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(401, 402, -402, 402, -402, -398, 401, -401)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(402, 396, -400, 396, -400, -402, 402, -402)])
 agent_radius = 0.0
 
 [node name="Game" type="Node2D" unique_id=1853252840]
+script = ExtResource("1_h85cu")
 
 [node name="GameManager" type="Node2D" parent="." unique_id=763898159]
 unique_name_in_owner = true
