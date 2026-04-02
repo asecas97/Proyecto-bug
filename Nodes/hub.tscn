@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfiual5k3gba3"]
 
 [ext_resource type="Texture2D" uid="uid://cjc1yrsghigka" path="res://Resources/save.png" id="1_aiynv"]
-[ext_resource type="Script" uid="uid://cgemfihepobev" path="res://Nodes/hub.gd" id="1_en34b"]
+[ext_resource type="Script" uid="uid://cgemfihepobev" path="res://scripts/hub.gd" id="1_en34b"]
 
 [node name="HUB" type="CanvasLayer" unique_id=974065852]
 script = ExtResource("1_en34b")

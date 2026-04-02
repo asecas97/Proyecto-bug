@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dltgmwnwy3bdt" path="res://Nodes/Bugs/ladybug.tscn" id="4_y4gxr"]
 [ext_resource type="PackedScene" uid="uid://dua71gp0fo107" path="res://Nodes/Bugs/longhorn_beetle.tscn" id="6_deiy4"]
 [ext_resource type="Texture2D" uid="uid://bnnqkbgvsr8aa" path="res://Resources/background.png" id="7_424rh"]
+[ext_resource type="PackedScene" uid="uid://lasnqx6hmeyh" path="res://Nodes/bush.tscn" id="10_kwr2q"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0d0y7"]
 
@@ -97,3 +98,26 @@ offset_top = -402.0
 offset_right = 402.0
 offset_bottom = 396.0
 texture = ExtResource("7_424rh")
+
+[node name="Bushes" type="Node" parent="." unique_id=2069306868]
+
+[node name="Bush" parent="Bushes" unique_id=464662376 instance=ExtResource("10_kwr2q")]
+position = Vector2(262, -237)
+
+[node name="Bush2" parent="Bushes" unique_id=2100944040 instance=ExtResource("10_kwr2q")]
+position = Vector2(172, -214)
+
+[node name="Bush3" parent="Bushes" unique_id=262173474 instance=ExtResource("10_kwr2q")]
+position = Vector2(311, -314)
+
+[node name="Bush4" parent="Bushes" unique_id=1070856544 instance=ExtResource("10_kwr2q")]
+position = Vector2(150, -296)
+
+[node name="Bush5" parent="Bushes" unique_id=757418724 instance=ExtResource("10_kwr2q")]
+position = Vector2(209, -310)
+
+[node name="Bush6" parent="Bushes" unique_id=1988378576 instance=ExtResource("10_kwr2q")]
+position = Vector2(263, -294)
+
+[node name="Bush7" parent="Bushes" unique_id=1023905311 instance=ExtResource("10_kwr2q")]
+position = Vector2(218, -260)
