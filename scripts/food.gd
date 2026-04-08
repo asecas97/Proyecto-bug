@@ -1,23 +1,28 @@
 extends StaticBody2D
 class_name Food
 
-@onready var health_component: HealthComponent = $HealthComponent
+@onready var floor_raycast: RayCast2D = $FloorRaycast
+@onready var health: HealthComponent = $Health
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var type = "";
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health_component.value = 100
+	health.value = 100
+	
+func _process(delta: float) -> void:
+	if not floor_raycast.is_colliding():
+		self.position.y += delta*60
 
 func setSprite() -> void:
-	if(health_component.value < 100 and health_component.value>=75):
+	if(health.value < 100 and health.value>=75):
 		animated_sprite.set_frame_and_progress(1, animated_sprite.get_process_delta_time())
-	elif(health_component.value < 75 and health_component.value>=50):
+	elif(health.value < 75 and health.value>=50):
 		animated_sprite.set_frame_and_progress(2, animated_sprite.get_process_delta_time())
-	elif(health_component.value < 50 and health_component.value>=5):
+	elif(health.value < 50 and health.value>=5):
 		animated_sprite.set_frame_and_progress(3, animated_sprite.get_process_delta_time())
-	elif(health_component.value < 25 and health_component.value>0):
+	elif(health.value < 25 and health.value>0):
 		animated_sprite.set_frame_and_progress(4, animated_sprite.get_process_delta_time())
 	else:
 		queue_free()
@@ -28,7 +33,7 @@ func save():
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x,
 		"pos_y" : position.y,
-		"health": health_component.save(),
+		"health": health.save(),
 		"type": type
 	}
 	return save_dict

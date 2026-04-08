@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://d0s8y1do11f7l"]
+
+[ext_resource type="Script" uid="uid://c8sjg1oqqgqhh" path="res://scripts/food.gd" id="1_aldf8"]
+[ext_resource type="Texture2D" uid="uid://c284l166o45ig" path="res://Resources/food.png" id="2_oiarl"]
+[ext_resource type="Script" uid="uid://6uqwtrt0e80d" path="res://scripts/health.gd" id="3_2uwgc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d5mo"]
+atlas = ExtResource("2_oiarl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8u1k"]
+atlas = ExtResource("2_oiarl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81xvc"]
+atlas = ExtResource("2_oiarl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0373"]
+atlas = ExtResource("2_oiarl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ymi6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d5mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8u1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81xvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0373")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8muns"]
+radius = 5.0
+height = 14.0
+
+[node name="NeutralFood" type="StaticBody2D" unique_id=1979490073]
+script = ExtResource("1_aldf8")
+metadata/_custom_type_script = "uid://c8sjg1oqqgqhh"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1039983363]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ymi6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779726118]
+shape = SubResource("CapsuleShape2D_8muns")
+
+[node name="FloorRaycast" type="RayCast2D" parent="." unique_id=1051664983]
+target_position = Vector2(0, 7)
+
+[node name="Health" type="Node2D" parent="." unique_id=288300245]
+script = ExtResource("3_2uwgc")
+metadata/_custom_type_script = "uid://6uqwtrt0e80d"

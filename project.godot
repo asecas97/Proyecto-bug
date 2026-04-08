@@ -25,6 +25,11 @@ shapes/navigation/2d/geometry_edge_disabled_color=Color(0.5517528, 0.5094144, 0.
 shapes/navigation/2d/geometry_face_disabled_color=Color(0.27058825, 0.57254905, 0.43137255, 1)
 shapes/navigation/2d/link_connection_disabled_color=Color(0.4568584, 0.4305852, 0.8779105, 1)
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=1024
+
 [global_group]
 
 Persist="Objetos a guardar"

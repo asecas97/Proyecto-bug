@@ -1,99 +1,82 @@
-[gd_scene format=3 uid="uid://dsxklv48kuflf"]
+[gd_scene format=3 uid="uid://dnhqvbjd6fmmn"]
 
-[ext_resource type="Script" uid="uid://lmmffgdet1qo" path="res://scripts/game_manager.gd" id="1_1sokt"]
-[ext_resource type="Script" uid="uid://wjeci6odngb4" path="res://scripts/game.gd" id="1_h85cu"]
-[ext_resource type="Script" uid="uid://cgy6rcwi6lgho" path="res://scripts/camera_2d.gd" id="2_wi60h"]
-[ext_resource type="PackedScene" uid="uid://vrlamuhgrn7g" path="res://Nodes/Foods/carnivore_food.tscn" id="3_424rh"]
-[ext_resource type="PackedScene" uid="uid://dfiual5k3gba3" path="res://Nodes/hub.tscn" id="3_fhu7r"]
-[ext_resource type="PackedScene" uid="uid://q3wdjqi0mnhi" path="res://Nodes/Foods/hervibore_food.tscn" id="4_fhu7r"]
-[ext_resource type="PackedScene" uid="uid://dltgmwnwy3bdt" path="res://Nodes/Bugs/ladybug.tscn" id="4_y4gxr"]
-[ext_resource type="PackedScene" uid="uid://dua71gp0fo107" path="res://Nodes/Bugs/longhorn_beetle.tscn" id="6_deiy4"]
-[ext_resource type="Texture2D" uid="uid://bnnqkbgvsr8aa" path="res://Resources/background.png" id="7_424rh"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0d0y7"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bfc22"]
+[ext_resource type="Texture2D" uid="uid://pgbafkkcns26" path="res://Resources/back_frontground.png" id="1_s24rg"]
+[ext_resource type="Script" uid="uid://lmmffgdet1qo" path="res://scripts/game_manager.gd" id="1_wi60h"]
+[ext_resource type="Texture2D" uid="uid://p4qrvxyw253h" path="res://Resources/front_frontground.png" id="2_1sokt"]
+[ext_resource type="PackedScene" uid="uid://d0s8y1do11f7l" path="res://Nodes/Foods/neutral_food.tscn" id="3_deiy4"]
+[ext_resource type="PackedScene" uid="uid://c7tb8q1f7awew" path="res://Nodes/Bugs/ladybug.tscn" id="3_wi60h"]
+[ext_resource type="PackedScene" uid="uid://dvmfbgtcndoxp" path="res://Nodes/Bugs/beetle.tscn" id="3_y4gxr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s24rg"]
+distance = 4.0
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1sokt"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wi60h"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_wi60h"]
-vertices = PackedVector2Array(402, 396, -400, 396, -400, -402, 402, -402)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(402, 396, -400, 396, -400, -402, 402, -402)])
-agent_radius = 0.0
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y4gxr"]
 
-[node name="Game" type="Node2D" unique_id=1853252840]
-script = ExtResource("1_h85cu")
+[node name="Game" type="Node2D" unique_id=736337929]
 
-[node name="GameManager" type="Node2D" parent="." unique_id=763898159]
+[node name="GameManager" type="Node2D" parent="." unique_id=623995170]
 unique_name_in_owner = true
-script = ExtResource("1_1sokt")
+script = ExtResource("1_wi60h")
 
-[node name="Border" type="Node" parent="." unique_id=34957187]
+[node name="Back" type="TextureRect" parent="." unique_id=1066846048]
+offset_left = -640.0
+offset_top = -512.0
+offset_right = 640.0
+offset_bottom = 512.0
+texture = ExtResource("1_s24rg")
 
-[node name="StaticBodyUp" type="StaticBody2D" parent="Border" unique_id=1039412791]
+[node name="Foods" type="Node" parent="." unique_id=1789914849]
+unique_name_in_owner = true
 
-[node name="CollisionShapeUp" type="CollisionShape2D" parent="Border/StaticBodyUp" unique_id=137557165]
-position = Vector2(0, -400)
-rotation = 3.1415927
-shape = SubResource("WorldBoundaryShape2D_0d0y7")
+[node name="NeutralFood" parent="Foods" unique_id=1979490073 instance=ExtResource("3_deiy4")]
+position = Vector2(-295, 214)
 
-[node name="StaticBodyLeft" type="StaticBody2D" parent="Border" unique_id=976249060]
+[node name="Bugs" type="Node" parent="." unique_id=1524493844]
+unique_name_in_owner = true
 
-[node name="CollisionShapeLeft" type="CollisionShape2D" parent="Border/StaticBodyLeft" unique_id=309185304]
-position = Vector2(-400, 0)
-rotation = 1.5707964
-shape = SubResource("WorldBoundaryShape2D_bfc22")
+[node name="Beetle" parent="Bugs" unique_id=1838684519 instance=ExtResource("3_y4gxr")]
+light_mask = 0
+z_index = 1
+position = Vector2(-66, 182)
 
-[node name="StaticBodyRight" type="StaticBody2D" parent="Border" unique_id=1396548688]
+[node name="Ladybug" parent="Bugs" unique_id=1993983954 instance=ExtResource("3_wi60h")]
+position = Vector2(16, 176)
 
-[node name="CollisionShapeRight" type="CollisionShape2D" parent="Border/StaticBodyRight" unique_id=1872813548]
-position = Vector2(400, 0)
-rotation = -1.5707964
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1967308175]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=662306136]
+position = Vector2(-1, 257)
 shape = SubResource("WorldBoundaryShape2D_s24rg")
 
-[node name="StaticBodyBottom" type="StaticBody2D" parent="Border" unique_id=334558169]
+[node name="Front" type="TextureRect" parent="." unique_id=1836102789]
+z_index = 2
+offset_left = -640.0
+offset_top = -512.0
+offset_right = 640.0
+offset_bottom = 512.0
+texture = ExtResource("2_1sokt")
 
-[node name="CollisionShapeBottom" type="CollisionShape2D" parent="Border/StaticBodyBottom" unique_id=1845517670]
-position = Vector2(0, 400)
-shape = SubResource("WorldBoundaryShape2D_1sokt")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=203373376]
+zoom = Vector2(0.9, 0.9)
+limit_left = -640
+limit_top = -512
+limit_right = 640
+limit_bottom = 512
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1006068481]
-zoom = Vector2(1.44, 1.44)
-limit_left = -400
-limit_top = -400
-limit_right = 400
-limit_bottom = 400
-script = ExtResource("2_wi60h")
+[node name="Border" type="Node" parent="." unique_id=491738425]
 
-[node name="HUB" parent="Camera2D" unique_id=974065852 instance=ExtResource("3_fhu7r")]
+[node name="StaticBodyLeft" type="StaticBody2D" parent="Border" unique_id=299225734]
 
-[node name="Foods" type="Node" parent="." unique_id=676520875]
-unique_name_in_owner = true
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="Border/StaticBodyLeft" unique_id=789702062]
+position = Vector2(-640, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_wi60h")
 
-[node name="CarnivoreFood" parent="Foods" unique_id=1666708513 groups=["Persist"] instance=ExtResource("3_424rh")]
-position = Vector2(-271, -280)
+[node name="StaticBodyRight" type="StaticBody2D" parent="Border" unique_id=329338124]
 
-[node name="HerviboreFood" parent="Foods" unique_id=93938981 groups=["Persist"] instance=ExtResource("4_fhu7r")]
-position = Vector2(-199, -274)
-
-[node name="Bugs" type="Node" parent="." unique_id=1915198742]
-unique_name_in_owner = true
-
-[node name="Ladybug" parent="Bugs" unique_id=980974651 groups=["Persist"] instance=ExtResource("4_y4gxr")]
-position = Vector2(-186, -340)
-
-[node name="LonghornBeetle" parent="Bugs" unique_id=1444678602 groups=["Persist"] instance=ExtResource("6_deiy4")]
-position = Vector2(-324, -352)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=288474848]
-navigation_polygon = SubResource("NavigationPolygon_wi60h")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1575599148]
-offset_left = -400.0
-offset_top = -402.0
-offset_right = 402.0
-offset_bottom = 396.0
-texture = ExtResource("7_424rh")
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="Border/StaticBodyRight" unique_id=1641430329]
+position = Vector2(640, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_y4gxr")

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dnhqvbjd6fmmn"]
+
+[ext_resource type="Texture2D" uid="uid://pgbafkkcns26" path="res://Resources/back_frontground.png" id="1_s24rg"]
+[ext_resource type="Script" uid="uid://lmmffgdet1qo" path="res://scripts/game_manager.gd" id="1_wi60h"]
+[ext_resource type="Texture2D" uid="uid://p4qrvxyw253h" path="res://Resources/front_frontground.png" id="2_1sokt"]
+[ext_resource type="PackedScene" uid="uid://dri4n0j4qccaf" path="res://Nodes/ladybug.tscn" id="3_1sokt"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s24rg"]
+distance = 4.0
+
+[node name="Game" type="Node2D" unique_id=736337929]
+
+[node name="GameManager" type="Node2D" parent="." unique_id=623995170]
+unique_name_in_owner = true
+script = ExtResource("1_wi60h")
+
+[node name="Back" type="TextureRect" parent="." unique_id=1066846048]
+offset_left = -640.0
+offset_top = -512.0
+offset_right = 640.0
+offset_bottom = 512.0
+texture = ExtResource("1_s24rg")
+
+[node name="Ladybug" parent="." unique_id=2042545263 instance=ExtResource("3_1sokt")]
+position = Vector2(30, 226)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1967308175]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=662306136]
+position = Vector2(-1, 257)
+shape = SubResource("WorldBoundaryShape2D_s24rg")
+
+[node name="Front" type="TextureRect" parent="." unique_id=1836102789]
+offset_left = -640.0
+offset_top = -512.0
+offset_right = 640.0
+offset_bottom = 512.0
+texture = ExtResource("2_1sokt")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=203373376]
+zoom = Vector2(0.9, 0.9)
+limit_left = -640
+limit_top = -512
+limit_right = 640
+limit_bottom = 512

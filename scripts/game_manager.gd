@@ -1,16 +1,18 @@
 extends Node2D
 
-var preload_bug: PackedScene
+var preload_food: PackedScene
 @onready var bugs: Node = %Bugs
 @onready var foods: Node = %Foods
 
 func _ready() -> void:
-	preload_bug = preload("res://Nodes/Bugs/ladybug.tscn")
+	get_viewport()
+	preload_food = preload("res://Nodes/Foods/neutral_food.tscn")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE:
 		if event.is_pressed():
-			test_add_food(get_global_mouse_position())
+			pass
+			#test_add_food(get_global_mouse_position())
 
 func eat(comida: Food, voracity: int) -> int:
 	if(comida.health_component.value < voracity):
@@ -105,9 +107,9 @@ func load_game():
 			new_object.set(i, node_data[i])
 		
 func test_add_food(p:Vector2):
-	var bug = preload_bug.instantiate()
-	add_child(bug)
-	bug.position.x = p.x
-	bug.position.y = p.y
-	bug.reparent(bugs)
-	bug.add_to_group("Persist")
+	var food = preload_food.instantiate()
+	add_child(food)
+	food.position.x = p.x
+	food.position.y = p.y
+	food.reparent(foods)
+	food.add_to_group("Persist")

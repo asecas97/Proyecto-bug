@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dvmfbgtcndoxp"]
+
+[ext_resource type="Script" uid="uid://b55qqr7i46yg8" path="res://scripts/bug.gd" id="1_idxpj"]
+[ext_resource type="Texture2D" uid="uid://djadels7t00pa" path="res://Resources/escarabajo_ejemplo.png" id="2_q11a2"]
+[ext_resource type="PackedScene" uid="uid://5ww5edyphjq2" path="res://Nodes/health.tscn" id="3_gdei5"]
+[ext_resource type="PackedScene" uid="uid://b3jqe8lofs0wq" path="res://Nodes/hunger.tscn" id="4_gva70"]
+[ext_resource type="PackedScene" uid="uid://bw7ira1t5pxq8" path="res://Nodes/energy.tscn" id="5_fud0g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehrv0"]
+atlas = ExtResource("2_q11a2")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlyqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehrv0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c14ql"]
+radius = 14.0
+height = 50.0
+
+[node name="Beetle" type="Node2D" unique_id=1838684519]
+script = ExtResource("1_idxpj")
+metadata/_custom_type_script = "uid://xfvanq6882uv"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1127527509]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_jlyqc")
+animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1365962536]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=271883272]
+position = Vector2(3, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_c14ql")
+
+[node name="FloorRaycast" type="RayCast2D" parent="." unique_id=1230806853]
+target_position = Vector2(0, 16)
+
+[node name="HeadRaycast" type="RayCast2D" parent="." unique_id=1764686440]
+rotation = 1.5707964
+target_position = Vector2(1.136496e-06, 26)
+
+[node name="Health" parent="." unique_id=528641348 instance=ExtResource("3_gdei5")]
+
+[node name="Hunger" parent="." unique_id=1284059024 instance=ExtResource("4_gva70")]
+
+[node name="Energy" parent="." unique_id=855717326 instance=ExtResource("5_fud0g")]
