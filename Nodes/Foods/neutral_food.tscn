@@ -41,7 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8muns"]
-radius = 5.0
+radius = 5.666667
 height = 14.0
 
 [node name="NeutralFood" type="StaticBody2D" unique_id=1979490073]
@@ -49,13 +49,15 @@ script = ExtResource("1_aldf8")
 metadata/_custom_type_script = "uid://c8sjg1oqqgqhh"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1039983363]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ymi6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1779726118]
+scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_8muns")
 
 [node name="FloorRaycast" type="RayCast2D" parent="." unique_id=1051664983]
+scale = Vector2(3, 3)
 target_position = Vector2(0, 7)
 
 [node name="Health" type="Node2D" parent="." unique_id=288300245]

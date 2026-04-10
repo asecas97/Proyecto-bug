@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dvmfbgtcndoxp"]
+[gd_scene format=3 uid="uid://dwl6l7pswwki8"]
 
 [ext_resource type="Script" uid="uid://b55qqr7i46yg8" path="res://scripts/bug.gd" id="1_idxpj"]
 [ext_resource type="Texture2D" uid="uid://djadels7t00pa" path="res://Resources/escarabajo_ejemplo.png" id="2_q11a2"]
@@ -10,7 +10,7 @@
 atlas = ExtResource("2_q11a2")
 region = Rect2(0, 0, 32, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jlyqc"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehrv0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -21,35 +21,34 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c14ql"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0uqj7"]
 radius = 14.0
 height = 50.0
 
-[node name="Beetle" type="Node2D" unique_id=1838684519]
+[node name="Beetle" type="Node2D" unique_id=1992600079]
 script = ExtResource("1_idxpj")
-metadata/_custom_type_script = "uid://xfvanq6882uv"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1127527509]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2033164675]
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_jlyqc")
+sprite_frames = SubResource("SpriteFrames_ehrv0")
 animation = &"idle"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1365962536]
+[node name="Area2D" type="Area2D" parent="." unique_id=723557110]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=271883272]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=876085556]
 position = Vector2(3, 2)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_c14ql")
+shape = SubResource("CapsuleShape2D_0uqj7")
 
-[node name="FloorRaycast" type="RayCast2D" parent="." unique_id=1230806853]
+[node name="FloorRaycast" type="RayCast2D" parent="." unique_id=804510882]
 target_position = Vector2(0, 16)
 
-[node name="HeadRaycast" type="RayCast2D" parent="." unique_id=1764686440]
+[node name="HeadRaycast" type="RayCast2D" parent="." unique_id=2092417464]
 rotation = 1.5707964
-target_position = Vector2(1.136496e-06, 26)
+target_position = Vector2(2.000001, 23)
 
-[node name="Health" parent="." unique_id=528641348 instance=ExtResource("3_gdei5")]
+[node name="Health" parent="." unique_id=300108782 instance=ExtResource("3_gdei5")]
 
-[node name="Hunger" parent="." unique_id=1284059024 instance=ExtResource("4_gva70")]
+[node name="Hunger" parent="." unique_id=433347301 instance=ExtResource("4_gva70")]
 
-[node name="Energy" parent="." unique_id=855717326 instance=ExtResource("5_fud0g")]
+[node name="Energy" parent="." unique_id=1496633614 instance=ExtResource("5_fud0g")]

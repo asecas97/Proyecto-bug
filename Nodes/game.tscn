@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://lmmffgdet1qo" path="res://scripts/game_manager.gd" id="1_wi60h"]
 [ext_resource type="Texture2D" uid="uid://p4qrvxyw253h" path="res://Resources/front_frontground.png" id="2_1sokt"]
 [ext_resource type="PackedScene" uid="uid://d0s8y1do11f7l" path="res://Nodes/Foods/neutral_food.tscn" id="3_deiy4"]
-[ext_resource type="PackedScene" uid="uid://c7tb8q1f7awew" path="res://Nodes/Bugs/ladybug.tscn" id="3_wi60h"]
-[ext_resource type="PackedScene" uid="uid://dvmfbgtcndoxp" path="res://Nodes/Bugs/beetle.tscn" id="3_y4gxr"]
+[ext_resource type="PackedScene" uid="uid://bq46xqltn54tn" path="res://Nodes/Bugs/ladybug.tscn" id="3_wi60h"]
+[ext_resource type="PackedScene" uid="uid://dfiual5k3gba3" path="res://Nodes/hub.tscn" id="6_deiy4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s24rg"]
 distance = 4.0
@@ -33,16 +33,14 @@ unique_name_in_owner = true
 [node name="NeutralFood" parent="Foods" unique_id=1979490073 instance=ExtResource("3_deiy4")]
 position = Vector2(-295, 214)
 
+[node name="NeutralFood2" parent="Foods" unique_id=1995732617 instance=ExtResource("3_deiy4")]
+position = Vector2(155, 220)
+
 [node name="Bugs" type="Node" parent="." unique_id=1524493844]
 unique_name_in_owner = true
 
-[node name="Beetle" parent="Bugs" unique_id=1838684519 instance=ExtResource("3_y4gxr")]
-light_mask = 0
-z_index = 1
-position = Vector2(-66, 182)
-
-[node name="Ladybug" parent="Bugs" unique_id=1993983954 instance=ExtResource("3_wi60h")]
-position = Vector2(16, 176)
+[node name="Ladybug" parent="Bugs" unique_id=1804718117 instance=ExtResource("3_wi60h")]
+position = Vector2(-11, 207)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1967308175]
 
@@ -80,3 +78,5 @@ shape = SubResource("WorldBoundaryShape2D_wi60h")
 position = Vector2(640, 0)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_y4gxr")
+
+[node name="HUB" parent="." unique_id=974065852 instance=ExtResource("6_deiy4")]

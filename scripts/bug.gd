@@ -1,4 +1,5 @@
-extends Node2D
+extends Node2D 
+class_name Bug
 
 var speed = 40
 var move_delta: float = 0.0
@@ -18,6 +19,7 @@ func _ready() -> void:
 	finish_pos = int(position.x)
 	health.value = 100
 	energy.value = 100
+	hunger.value = 0
 	hunger.voracity = 2
 
 
@@ -27,19 +29,21 @@ func _process(delta: float) -> void:
 	eating_delta += delta
 	if not floor_raycast.is_colliding():
 		self.position.y += delta*60
-	if(head_raycast.is_colliding()): # TODO: cambiar
-		if(head_raycast.get_collider() is Food && (hunger.value >= 25 or hunger.eating)):
+	if(head_raycast.is_colliding()):
+		if(head_raycast.get_collider() is Food && (hunger.value >= 75 or hunger.eating)):
 			stop()
 			if(int(eating_delta) % 1 == 0 && int(eating_delta) != 0):
 				eating_delta = 0.0
 				eat(head_raycast.get_collider())
 			return
-	if(hunger.value >= 50 and !hunger.eating):
-		var food = game_manager.getNearestFood(position.x, position.y, self) # TODO: change
-		finish_pos = food.get_position()
+		else:
+			hunger.eating = false
+	if(hunger.value >= 90 and !hunger.eating):
+		var food = game_manager.getNearestFood(position.x, self)
+		finish_pos = food.get_position().x
 		move_delta = 0.0
 		move(delta)
-	elif(int(move_delta) % 4 == 0 && int(move_delta) != 0): #&& nav_agent.is_navigation_finished()
+	elif(int(move_delta) % 4 == 0 && int(move_delta) != 0):
 		move_delta = 0.0
 		random_move(delta)
 	elif(int(position.x) == finish_pos):
@@ -63,7 +67,8 @@ func move(delta:float):
 	else:
 		animated_sprite.flip_h = false
 		head_raycast.rotation_degrees = 90
-	position.x += delta * speed * i
+	if(int(position.x) != finish_pos):
+		position.x += delta * speed * i
 	#animated_sprite.play("move")
 
 func stop():
@@ -71,15 +76,13 @@ func stop():
 		animated_sprite.play("idle")
 		
 func eat(comida: Food):
-	pass
-	"""var food = game_manager.eat(comida, hunger.voracity)
+	var food = game_manager.eat(comida, hunger.voracity)
 	hunger.value -= food
-	if(hunger.value == 0 or food == 0):
+	if(hunger.value == 0 or food == 0 or comida == null):
 		hunger.eating = false
 	else:
-		animated_sprite.play("eat")
+		#animated_sprite.play("eat")
 		hunger.eating = true
-		nav_agent.target_position = self.position"""
 
 func save():
 	var save_dict = {

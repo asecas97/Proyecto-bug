@@ -15,24 +15,24 @@ func _input(event: InputEvent) -> void:
 			#test_add_food(get_global_mouse_position())
 
 func eat(comida: Food, voracity: int) -> int:
-	if(comida.health_component.value < voracity):
-		voracity = comida.health_component.value
-		comida.health_component.value = 0
+	if(comida.health.value < voracity):
+		voracity = comida.health.value
+		comida.health.value = 0
 	else:
-		comida.health_component.value -= voracity
+		comida.health.value -= voracity
 	comida.setSprite()
 	return voracity
 
-func getNearestFood(x_position:int,y_position:int, bug:Bug)-> Food:
+func getNearestFood(x_position:int, bug:Bug)-> Food:
 	var foods_node: Node = $"../Foods"
-	var foods = foods_node.get_children(false)
-	if(foods.size() > 0):
-		var nearest_food = foods[0]
-		var distance_to_the_nearest_food = abs(x_position - nearest_food.position.x) + abs(y_position - nearest_food.position.y)
+	var all_foods = foods_node.get_children(false)
+	if(all_foods.size() > 0):
+		var nearest_food = all_foods[0]
+		var distance_to_the_nearest_food = abs(x_position - nearest_food.position.x)
 		var distance_to_the_food = 0
-		for food in foods:
+		for food in all_foods:
 			if(food.type == bug.hunger.diet_type):
-				distance_to_the_food = abs(x_position - food.position.x) + abs(y_position - food.position.y)
+				distance_to_the_food = abs(x_position - food.position.x)
 				if(distance_to_the_food<distance_to_the_nearest_food):
 					nearest_food = food
 					distance_to_the_nearest_food= distance_to_the_food
