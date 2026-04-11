@@ -7,12 +7,12 @@ var preload_food: PackedScene
 func _ready() -> void:
 	get_viewport()
 	preload_food = preload("res://Nodes/Foods/neutral_food.tscn")
+	load_game()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE:
 		if event.is_pressed():
-			pass
-			#test_add_food(get_global_mouse_position())
+			test_add_food(get_global_mouse_position())
 
 func eat(comida: Food, voracity: int) -> int:
 	if(comida.health.value < voracity):
@@ -66,6 +66,7 @@ func save_game():
 	
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
+		print("no carga")
 		return # Error! We don't have a save to load.
 
 	# We need to revert the game state so we're not cloning objects
