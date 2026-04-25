@@ -52,3 +52,6 @@ target_position = Vector2(5.000001, 24)
 [node name="Hunger" parent="." unique_id=1182906226 instance=ExtResource("4_p5m5h")]
 
 [node name="Energy" parent="." unique_id=1972877984 instance=ExtResource("5_fg6j6")]
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -21,4 +21,35 @@ offset_right = 93.0
 offset_bottom = 93.0
 texture = ExtResource("1_aiynv")
 
+[node name="MenuBar" type="MenuBar" parent="." unique_id=312725928]
+visible = false
+offset_right = 567.0
+offset_bottom = 40.0
+
+[node name="PopupMenu" type="PopupMenu" parent="MenuBar" unique_id=1131411799]
+
+[node name="PopupMenu2" type="PopupMenu" parent="MenuBar" unique_id=2133659751]
+
+[node name="PopupMenu3" type="PopupMenu" parent="MenuBar" unique_id=2085770599]
+
+[node name="PopupMenu4" type="PopupMenu" parent="MenuBar" unique_id=845107741]
+
+[node name="PopupMenu5" type="PopupMenu" parent="MenuBar" unique_id=1909627116]
+
+[node name="MenuBar2" type="MenuBar" parent="." unique_id=1224127595]
+visible = false
+offset_top = 50.0
+offset_right = 567.0
+offset_bottom = 90.0
+
+[node name="PopupMenu" type="PopupMenu" parent="MenuBar2" unique_id=1914032283]
+
+[node name="PopupMenu2" type="PopupMenu" parent="MenuBar2" unique_id=1281093531]
+
+[node name="PopupMenu3" type="PopupMenu" parent="MenuBar2" unique_id=1445149777]
+
+[node name="PopupMenu4" type="PopupMenu" parent="MenuBar2" unique_id=1961872956]
+
+[node name="PopupMenu5" type="PopupMenu" parent="MenuBar2" unique_id=298288846]
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

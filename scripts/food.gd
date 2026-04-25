@@ -1,6 +1,9 @@
 extends StaticBody2D
 class_name Food
 
+var draggable = false
+var offset: Vector2
+
 @onready var floor_raycast: RayCast2D = $FloorRaycast
 @onready var health: HealthComponent = $Health
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -12,8 +15,10 @@ func _ready() -> void:
 	health.value = 100
 	
 func _process(delta: float) -> void:
-	if not floor_raycast.is_colliding():
-		self.position.y += delta*60
+	var dragged = is_dragged()
+	if(!dragged):
+		if not floor_raycast.is_colliding():
+			self.position.y += delta*60
 
 func setSprite() -> void:
 	if(health.value < 100 and health.value>=75):
@@ -37,3 +42,22 @@ func save():
 		"type": type
 	}
 	return save_dict
+
+func is_dragged() -> bool:
+	if(draggable):
+		if(Input.is_action_just_pressed("click")):
+			offset = get_global_mouse_position() - global_position
+		if(Input.is_action_pressed("click")):
+			global_position = get_global_mouse_position() - offset
+		elif(Input.is_action_just_released("click")):
+			return false
+	return false
+
+func _on_mouse_entered() -> void:
+	# TODO: Presentar info de los datos mas importprint_tree()
+	draggable = true
+	print(draggable)
+
+
+func _on_mouse_exited() -> void:
+	draggable = false
